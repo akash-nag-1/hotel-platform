@@ -1,11 +1,13 @@
-# Use official PHP + Apache image
 FROM php:8.2-apache
 
-# Enable URL rewriting
+# Enable mod_rewrite for clean URLs
 RUN a2enmod rewrite
 
-# Copy project files to Apache web root
-COPY . /var/www/html/
+# Set the working directory
+WORKDIR /var/www/html
 
-# Expose port 80
+# Copy all files
+COPY . .
+
+# Expose default Apache port
 EXPOSE 80
